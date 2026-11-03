@@ -1,0 +1,7 @@
+r_dir_file(system_app, vendor_sysfs_battery_supply)
+r_dir_file(system_app, vendor_sysfs_usb_supply)
+r_dir_file(system_app, vendor_sysfs_graphics)
+allow system_app { vendor_sysfs_battery_supply vendor_sysfs_usb_supply vendor_sysfs_graphics }:file rw_file_perms;
+allow system_app vendor_proc_charger:dir r_dir_perms;
+allow system_app vendor_proc_charger:file rw_file_perms;
+allow system_app { proc_stat vendor_sysfs_kgsl vendor_sysfs_kgsl_gpuclk }:file r_file_perms;

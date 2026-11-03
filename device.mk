@@ -38,7 +38,7 @@ $(call soong_config_set,surfaceflinger,udfps_lib,//hardware/oplus:libudfps_exten
 $(call soong_config_set_bool,qtidisplay,oplus_udfps,true)
 
 # LiveDisplay
-$(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_AF,true)
+$(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_AF,false)
 $(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_SE,false)
 
 # Overlays
@@ -46,10 +46,10 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_PACKAGES += \
-    KeyHandlerResTarget \
     OPlusFrameworksResTarget \
     OPlusSettingsProviderResTarget \
     OPlusSettingsResTarget \
+    OPlusWifiResTarget \
     OPlusSystemUIResTarget
 
 # Power
@@ -80,9 +80,19 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.vibrator.service.oplus
 
 $(call soong_config_set_bool,OPLUS_LINEAGE_VIBRATOR_HAL,USE_EFFECT_STREAM,true)
+$(call soong_config_set,OPLUS_LINEAGE_VIBRATOR_HAL,INCLUDE_DIR,$(LOCAL_PATH)/vibrator)
 
 # Inherit from the common OEM chipset makefile.
 $(call inherit-product, device/oneplus/sm8550-common/common.mk)
 
 # Inherit from the proprietary files makefile.
 $(call inherit-product, vendor/oneplus/astonc/astonc-vendor.mk)
+
+# OnePlus IR Remote App
+$(call inherit-product, vendor/oneplus/ir/config.mk)
+
+# OnePlus Camera and Gallery (Ace 3 .400 port)
+TARGET_USES_OPLUS_CAMERA := true
+PRODUCT_SOONG_NAMESPACES += device/oneplus/astonc vendor/oplus/camera
+$(call inherit-product, vendor/oplus/camera/camera-vendor.mk)
+PRODUCT_PACKAGES += libapsfixup sr_models.bin_symlink sr_ref_models.bin_symlink

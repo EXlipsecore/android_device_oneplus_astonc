@@ -29,4 +29,8 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/properties/vendor.prop
 TARGET_RECOVERY_UI_MARGIN_HEIGHT := 103
 
 # Include the proprietary files BoardConfig.
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 include vendor/oneplus/astonc/BoardConfigVendor.mk
+
+BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/properties/system.prop

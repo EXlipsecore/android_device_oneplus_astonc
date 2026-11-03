@@ -1,2 +1,15 @@
 soong_namespace {
+    imports: ["hardware/oplus", "vendor/oneplus/astonc", "vendor/oplus/camera"],
+}
+install_symlink {
+    name: "sr_models.bin_symlink",
+    device_specific: true,
+    installed_location: "lib64/sr_models.bin",
+    symlink_target: "sr_models.so",
+}
+install_symlink {
+    name: "sr_ref_models.bin_symlink",
+    device_specific: true,
+    installed_location: "lib64/sr_ref_models.bin",
+    symlink_target: "sr_ref_models.so",
 }

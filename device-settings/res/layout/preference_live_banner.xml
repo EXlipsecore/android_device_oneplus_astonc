@@ -1,0 +1,18 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:paddingTop="4dp" android:paddingBottom="8dp">
+  <org.lineageos.device.settings.LiveBannerView android:id="@+id/lb_card"
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:background="@drawable/bg_lb_card" android:clipToOutline="true">
+    <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:scaleType="centerCrop" android:src="@drawable/oplus_banner" />
+    <FrameLayout android:id="@+id/lb_plate" android:layout_width="0dp" android:layout_height="0dp"
+        android:background="@drawable/bg_lb_card" android:clipToOutline="true" android:clipChildren="true">
+      <ImageView android:id="@+id/lb_frost" android:layout_width="0dp" android:layout_height="0dp"
+          android:scaleType="centerCrop" android:src="@drawable/oplus_banner" />
+      <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#33000000" />
+      <LinearLayout android:id="@+id/lb_col" android:layout_width="match_parent" android:layout_height="match_parent"
+          android:orientation="vertical" android:padding="10dp" />
+    </FrameLayout>
+  </org.lineageos.device.settings.LiveBannerView>
+</FrameLayout>
